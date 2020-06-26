@@ -1,0 +1,38 @@
+<h1>User</h1>
+<div>
+
+  <table border='1' width='100%' style='border-collapse: collapse;'>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Fullname</th>
+        <th>Password</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.fullname }}</td>
+      <td>{{ user.password }}</td>
+      <td>
+        <button (click)="selectUser(user)">Update</button>
+        <button (click)="deleteUser(user.id)">Delete</button>
+      </td>
+    </tr>
+  </table>
+
+  <br>
+  <form #f="ngForm">
+    <label>Username</label>
+    <input type="text" name="username" [(ngModel)]="selectedUser.username">
+    <br>
+    <label>Fullname</label>
+    <input type="text" name="fullname" [(ngModel)]="selectedUser.fullname">
+    <br>
+    <label>Password</label>
+    <input type="text" name="password" [(ngModel)]="selectedUser.password">
+    <br>
+    <input type="button" (click)="createOrUpdateUser(f)" value="Create or Update User">
+  </form>
